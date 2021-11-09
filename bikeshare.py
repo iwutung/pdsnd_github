@@ -163,6 +163,7 @@ def user_stats(df):
 
 def view_data(df):
     """Displays data upon request by the user"""
+    pd.set_option('display.max_columns',200)
     n = 0
     while True:
         # Prompt the user if they want to see 5 lines of row data
