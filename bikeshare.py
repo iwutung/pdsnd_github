@@ -1,3 +1,4 @@
+import calendar
 import time
 import pandas as pd
 import numpy as np
@@ -87,7 +88,7 @@ def time_stats(df):
     start_time = time.time()
 
     # display the most common month
-    print('Most common month: ', df['month'].mode()[0])
+    print('Most common month: ', calendar.month_name[df['month'].mode()[0])]
 
     # display the most common day of week
     print('Most common day of the week: ', df['day'].mode()[0])
