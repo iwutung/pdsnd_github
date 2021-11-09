@@ -1,3 +1,4 @@
+import calendar
 import time
 import pandas as pd
 import numpy as np
@@ -19,7 +20,7 @@ def get_filters():
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     while True:
         city = input('Please select a city to explore.\n Chicago\n New York\n Washington\n -> ').lower()
-        if city in CITY_DATA.keys():
+        if city in CITY_DATA:
             break
         else:
             print('Oops... looks like an error occured! \nPlease enter a valid option! example: chicago')
@@ -87,7 +88,7 @@ def time_stats(df):
     start_time = time.time()
 
     # display the most common month
-    print('Most common month: ', df['month'].mode()[0])
+    print('Most common month: ', calendar.month_name[df['month'].mode()[0])]
 
     # display the most common day of week
     print('Most common day of the week: ', df['day'].mode()[0])
@@ -162,6 +163,7 @@ def user_stats(df):
 
 def view_data(df):
     """Displays data upon request by the user"""
+    pd.set_option('display.max_columns',200)
     n = 0
     while True:
         # Prompt the user if they want to see 5 lines of row data
